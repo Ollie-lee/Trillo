@@ -2,13 +2,24 @@
     //enough space:1200px 
     //not enough space(less than 1200px):
     //then we simply occupy 100% of the available view port width.
-    max-width: 90%;
+
+    //do not use %, cant be responsive
+    max-width: 120rem;
     margin: 4rem auto;
 
     background-color: var(--color-grey-light-2);
     box-shadow: var(--shadow-dark);
 
     min-height: 50rem;
+
+    @media only screen and (max-width:$bp-largest) {
+        //desktop-first, use max-width
+        margin: 0;
+        // in the media query, we use 100% 
+        //to make sure take up the whole screen
+        max-width: 100%;
+        width: 100%;
+    }
 }
 
 .header {
@@ -21,11 +32,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media only screen and (max-width:$bp-smallest) {
+        //make last item wrap into a new line
+        flex-wrap: wrap;
+        height: 11rem;
+        align-content: space-around;
+    }
 }
 
 .content {
     // make sidebar/hotelview become flex-item, side by side
     display: flex;
+
+    @media only screen and (max-width:$bp-medium) {
+        flex-direction: column;
+    }
 }
 
 .sidebar {
@@ -51,6 +73,14 @@
     border-bottom: var(--line);
     font-size: 1.4rem;
 
+    @media only screen and (max-width:$bp-medium) {
+        padding: 3rem;
+    }
+
+
+    @media only screen and (max-width:$bp-small) {
+        flex-direction: column;
+    }
 }
 
 .description {
@@ -60,6 +90,17 @@
     background-color: white;
     box-shadow: var(--shadow-light);
     padding: 3rem;
+
+    @media only screen and (max-width:$bp-medium) {
+        padding: 2rem;
+        margin-right: 3rem;
+    }
+
+    @media only screen and (max-width:$bp-small) {
+        margin-right: 0;
+        margin-bottom: 3rem;
+    }
+
 }
 
 .user-reviews {
