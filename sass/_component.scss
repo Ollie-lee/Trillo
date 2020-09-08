@@ -427,16 +427,26 @@
         height: 1rem;
         width: 1rem;
         margin-right: .7rem;
-        //older browser
-        // background-image: url(../img/chevron-thin-right.svg);
-        // background-size: cover;
+        //older browser : problem is we cannot change svgs' color
+        background-image: url(../img/chevron-thin-right.svg);
+        background-size: cover;
 
-        //new browser-masks
+
+
+
+        // new browser-masks
+        @supports(mask-image:url())or (-webkit-mask-image:url()) {
+            background-color: var(--color-primary);
+            //only see the svg area
+            mask-image: url(../img/chevron-thin-right.svg);
+            mask-size: cover;
+            background-image: none; //remove background image in old browser
+        }
+
+
+
         //whole square space
-        background-color: var(--color-primary);
-        //only see the svg area
-        mask-image: url(../img/chevron-thin-right.svg);
-        mask-size: cover;
+
     }
 }
 
